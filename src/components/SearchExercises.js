@@ -12,27 +12,26 @@ const SearchExercises = ({ setBodyPart, bodyPart }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-  const fetchInitialData = async () => {
-    const bodyPartsData = await fetchData(
-      'https://exercisedb.p.rapidapi.com/exercises/bodyPartList',
-      exerciseOptions
-    );
-    const exercisesData = await fetchData(
-      'https://exercisedb.p.rapidapi.com/exercises',
-      exerciseOptions
-    );
+    const fetchInitialData = async () => {
+      const bodyPartsData = await fetchData(
+        'https://exercisedb.p.rapidapi.com/exercises/bodyPartList',
+        exerciseOptions
+      );
+      const exercisesData = await fetchData(
+        'https://exercisedb.p.rapidapi.com/exercises',
+        exerciseOptions
+      );
 
-    console.log('Exercise count:', exercisesData.length); // 👈 Add this
+      console.log('Exercise count:', exercisesData.length);
 
-    setBodyParts(['all', ...bodyPartsData]);
-    setAllExercises(exercisesData);
-  };
+      setBodyParts(['all', ...bodyPartsData]);
+      setAllExercises(exercisesData);
+    };
 
-  fetchInitialData();
-}, []);
+    fetchInitialData();
+  }, []);
 
 
-  // Live update suggestions
   useEffect(() => {
     const input = search.trim().toLowerCase();
     if (!input) {
@@ -95,7 +94,6 @@ const SearchExercises = ({ setBodyPart, bodyPart }) => {
           Search
         </button>
 
-        {/* 🔽 Dropdown Suggestions */}
         {suggestions.length > 0 && (
           <ul className="absolute z-50 w-full bg-white border border-gray-200 mt-2 rounded-xl max-h-60 overflow-y-auto shadow-lg">
             {suggestions.map((exercise) => (
