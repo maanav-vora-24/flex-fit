@@ -1,25 +1,50 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Stack } from '@mui/material';
-
-import Logo from '../assets/images/Logo.png';
+import Logo from '../assets/logo.jpg';
 
 const Navbar = () => (
-  <Stack direction="row" justifyContent="space-around" sx={{ gap: { sm: '123px', xs: '40px' }, mt: { sm: '32px', xs: '20px' }, justifyContent: 'none' }} px="20px">
-    <Link to="/">
-      <img src={Logo} alt="logo" style={{ width: '48px', height: '48px', margin: '0px 20px' }} />
-    </Link>
-    <Stack
-      direction="row"
-      gap="40px"
-      fontFamily="Alegreya"
-      fontSize="24px"
-      alignItems="flex-end"
-    >
-      <Link to="/" style={{ textDecoration: 'none', color: '#3A1212', borderBottom: '3px solid #FF2625' }}>Home</Link>
-      <a href="#exercises" style={{ textDecoration: 'none', color: '#3A1212' }}>Exercises</a>
-    </Stack>
-  </Stack>
+  <nav className="bg-white shadow-md w-full sticky top-0 z-50">
+    <div className="flex justify-between items-center px-5 lg:px-20 py-4">
+      <Link to="/">
+        <img src={Logo} alt="logo" className="w-42 h-12" />
+      </Link>
+
+      {/* Navigation Links */}
+      <div className="hidden md:flex gap-8 text-[16px] lg:text-[18px] font-semibold text-gray-700">
+        <Link
+          to="/"
+          className="hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-500"
+        >
+          Home
+        </Link>
+        <a
+          href="#exercises"
+          className="hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-500"
+        >
+          Exercises
+        </a>
+        <Link
+          to="/blogs"
+          className="hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-500"
+        >
+          Blogs
+        </Link>
+        <Link
+          to="/about"
+          className="hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-500"
+        >
+          About Us
+        </Link>
+        <Link
+          to="/calorie-tracker"
+          className="hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-500"
+        >
+          Calorie Tracker
+        </Link>
+      </div>
+    </div>
+  </nav>
 );
 
 export default Navbar;
+

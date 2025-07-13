@@ -41,16 +41,13 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
       </h2>
 
       <ScrollMenu>
-        {currentExercises.map((exercise) => (
-          <div
-            key={exercise.id}
-            itemId={exercise.id}
-            title={exercise.name}
-            className="mx-5 inline-block"
-          >
-            <ExerciseCard exercise={exercise} />
-          </div>
-        ))}
+        <div className="flex gap-6 px-6">
+          {currentExercises.map((exercise) => (
+            <div key={exercise.id} itemId={exercise.id} className="flex-shrink-0 w-[400px]">
+              <ExerciseCard exercise={exercise} />
+            </div>
+          ))}
+        </div>
       </ScrollMenu>
     </div>
   );

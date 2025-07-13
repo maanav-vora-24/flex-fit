@@ -4,22 +4,28 @@ import { Link } from 'react-router-dom';
 const ExerciseCard = ({ exercise }) => (
   <Link
     to={`/exercise/${exercise.id}`}
-    className="w-[400px] h-[445px] bg-white border-t-[4px] border-red-600 rounded-bl-[20px] no-underline flex flex-col justify-between pb-[10px] transform transition-transform duration-300 hover:scale-105"
+    className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-transform duration-300 hover:scale-105 w-full max-w-[400px] mx-auto p-6 flex flex-col items-center text-center"
   >
+    <h2 className="text-2xl font-black text-gray-900 mb-4 leading-snug uppercase">
+      {exercise.name}
+    </h2>
+
     <img
       src={exercise.gifUrl}
       alt={exercise.name}
       loading="lazy"
-      className="h-[326px] w-full object-cover"
+      className="w-full h-[300px] object-contain rounded-md mb-6"
     />
-    <div className="flex flex-row px-5 mt-2 gap-3">
-      <span className="px-4 py-1 text-white bg-red-300 text-sm rounded-full capitalize">{exercise.bodyPart}</span>
-      <span className="px-4 py-1 text-white bg-yellow-300 text-sm rounded-full capitalize">{exercise.target}</span>
-    </div>
-    <p className="ml-5 text-black font-bold text-[20px] lg:text-[24px] mt-3 pb-2 capitalize">
-      {exercise.name}
+
+    <span className="px-4 py-1 bg-blue-600 text-white text-sm rounded-full capitalize mb-4">
+      {exercise.target}
+    </span>
+
+    <p className="text-gray-600 text-sm leading-relaxed">
+      This exercise targets your <span className="font-semibold capitalize">{exercise.target}</span> using <span className="font-semibold capitalize">{exercise.equipment}</span>. Helps improve strength and endurance.
     </p>
   </Link>
 );
 
 export default ExerciseCard;
+

@@ -1,61 +1,57 @@
 import React from 'react';
 
-import BodyPartImage from '../assets/icons/body-part.png';
-import TargetImage from '../assets/icons/target.png';
-import EquipmentImage from '../assets/icons/equipment.png';
-
 const Detail = ({ exerciseDetail }) => {
   const { bodyPart, gifUrl, name, target, equipment } = exerciseDetail;
 
   const extraDetail = [
     {
-      icon: BodyPartImage,
-      name: bodyPart,
+      label: 'Body Part',
+      value: bodyPart,
+      color: 'bg-red-100 text-red-700',
     },
     {
-      icon: TargetImage,
-      name: target,
+      label: 'Target Muscle',
+      value: target,
+      color: 'bg-blue-100 text-blue-700',
     },
     {
-      icon: EquipmentImage,
-      name: equipment,
+      label: 'Equipment',
+      value: equipment,
+      color: 'bg-green-100 text-green-700',
     },
   ];
 
   return (
-    <div className="flex flex-col lg:flex-row items-center gap-[60px] p-5">
+    <div className="flex flex-col lg:flex-row items-center justify-center gap-10 px-5 py-10">
       <img
         src={gifUrl}
         alt={name}
         loading="lazy"
-        className="w-[300px] lg:w-[729px] h-auto object-cover"
+        className="w-[320px] lg:w-[500px] rounded-xl shadow-lg object-contain"
       />
-      <div className="flex flex-col gap-[20px] lg:gap-[35px]">
-        <h2 className="text-[30px] lg:text-[64px] font-bold capitalize">
+
+      <div className="flex flex-col gap-6 max-w-xl">
+        <h2 className="text-[32px] lg:text-[48px] font-black capitalize text-gray-900">
           {name}
         </h2>
-        <p className="text-[18px] lg:text-[24px] text-gray-700 leading-7">
-          Exercises keep you strong.{' '}
-          <span className="capitalize font-semibold">{name}</span> is one
-          of the best exercises to target your {target}. <br /> It will help
-          you improve your mood and gain energy.
+
+        <p className="text-[16px] lg:text-[20px] text-gray-700 leading-7">
+          Exercises keep you strong. <span className="capitalize font-semibold text-black">{name}</span> is one
+          of the best exercises to target your <span className="capitalize font-semibold">{target}</span>.
+          It will help you improve your mood and gain energy.
         </p>
 
-        {extraDetail.map((item) => (
-          <div
-            key={item.name}
-            className="flex items-center gap-6"
-          >
-            <div className="w-[100px] h-[100px] rounded-full bg-[#FFF2DB] flex items-center justify-center">
-              <img
-                src={item.icon}
-                alt={item.name}
-                className="w-[50px] h-[50px]"
-              />
+        <div className="flex flex-col gap-4">
+          {extraDetail.map((item) => (
+            <div
+              key={item.label}
+              className={`flex items-center gap-4 px-4 py-2 rounded-lg shadow-sm border ${item.color}`}
+            >
+              <span className="text-[16px] font-bold">{item.label}:</span>
+              <span className="capitalize font-medium">{item.value}</span>
             </div>
-            <p className="text-[20px] lg:text-[30px] capitalize">{item.name}</p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
